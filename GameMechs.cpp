@@ -1,5 +1,7 @@
 #include "GameMechs.h"
 
+//the logic behind the game running and the board 
+
 GameMechs::GameMechs()
 {
     

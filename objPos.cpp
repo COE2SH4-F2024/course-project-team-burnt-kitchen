@@ -1,4 +1,5 @@
 #include "objPos.h"
+//for the object / character 
 
 objPos::objPos()
 {
@@ -18,6 +19,7 @@ objPos::objPos(int xPos, int yPos, char sym)
 
 // Respect the rule of six / minimum four
 // [TODO] Implement the missing special member functions to meet the minimum four rule
+//need a copy constructor, copy assignment and a destructor 
 
 
 
