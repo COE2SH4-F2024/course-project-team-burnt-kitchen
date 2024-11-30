@@ -45,6 +45,7 @@ void Initialize(void)
 
     game = new GameMechs();
     player = new Player(game);
+    
 }
 
 void GetInput(void)
@@ -68,6 +69,7 @@ void DrawScreen(void)
     int i, j;
     int spaceFlag = 1;
     objPosArrayList* playerPosList;
+
     // drawing routine
     int x, y;
     for(i=0;i<game -> getBoardSizeY();i++) {

@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace std;
-
+//objPos name = objPos();
 objPos::objPos()
 {
     pos = new Pos;
