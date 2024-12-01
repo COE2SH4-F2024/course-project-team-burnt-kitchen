@@ -23,4 +23,10 @@ objPos Food::getFoodPos() const
 void Food::setFoodPos(objPos obj) {
     foodPos.pos -> x = obj.pos -> x;
     foodPos.pos -> y = obj.pos -> y;
+    foodPos.symbol = obj.symbol;
+}
+
+void Food::setFoodPos(int newX, int newY) {
+    foodPos.pos -> x = newX;
+    foodPos.pos -> y = newY;
 }

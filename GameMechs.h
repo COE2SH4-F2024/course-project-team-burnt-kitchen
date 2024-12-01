@@ -46,6 +46,7 @@ class GameMechs
         
         // More methods should be added here
         void generateFood(objPosArrayList* blockOff);
+        objPos getfoodPos();
 };
 
 #endif

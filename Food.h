@@ -11,6 +11,7 @@ class Food
         // void generateFood(objPos blockOff);
         objPos getFoodPos() const;
         void setFoodPos(objPos obj);
+        void setFoodPos(int newX, int newY);
 
     private:
         objPos foodPos;

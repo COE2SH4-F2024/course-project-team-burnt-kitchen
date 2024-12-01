@@ -45,6 +45,7 @@ void Initialize(void)
 
     game = new GameMechs();
     player = new Player(game);
+    game -> generateFood(player->getPlayerPosList());
     
 }
 
@@ -71,17 +72,22 @@ void DrawScreen(void)
     objPosArrayList* playerPosList;
 
     // drawing routine
-    int x, y;
+    // int x, y;
     for(i=0;i<game -> getBoardSizeY();i++) {
         for(j=0;j<game -> getBoardSizeX();j++) {
-            x = (player -> getPlayerHead()).pos -> x;
-            y = (player -> getPlayerHead()).pos -> y;
+            // x = (player -> getPlayerHead()).pos -> x;
+            // y = (player -> getPlayerHead()).pos -> y;
             if(i == 0 || i == game -> getBoardSizeY()-1 || j == 0 || j == game -> getBoardSizeX()-1) {
                 MacUILib_printf("#");
             // } else if(x+1 == j && y+1 == i) {
             //     MacUILib_printf("%c", (player -> getPlayerHead()).symbol);
-            // } else {
-            } else {
+            // } else 
+            } 
+            else if (i == (game -> getfoodPos().pos -> y)+1 && j == (game -> getfoodPos().pos -> x) + 1) 
+            {
+                MacUILib_printf("%c", game -> getfoodPos().symbol);
+            }
+            else {
                 // not player, not border. check if any item positions match
                 spaceFlag = 1;
                 playerPosList = player -> getPlayerPosList();
@@ -102,6 +108,8 @@ void DrawScreen(void)
     }   
     MacUILib_printf("HELLO\n");
     playerPosList -> printList();
+    MacUILib_printf("y: %d x: %d", (game -> getfoodPos().pos -> y) + 1, (game -> getfoodPos().pos -> x)+1);
+
 }
 
 void LoopDelay(void)

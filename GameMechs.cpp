@@ -1,5 +1,6 @@
 #include "GameMechs.h"
 
+
 //the logic behind the game running and the board 
 
 GameMechs::GameMechs()
@@ -41,6 +42,7 @@ bool GameMechs::getExitFlagStatus() const
 
 bool GameMechs::getLoseFlagStatus() const
 {
+    
     return loseFlag;
 }
     
@@ -98,60 +100,34 @@ void GameMechs::clearInput()
 }
 
 // More methods should be added here
-void generateFood(objPosArrayList* blockOff) 
-{   
-    //is the objPosArrayList the player -> do i make the collision logic in here? 
-   int new_items = 0;
-   int x_values[28] = {0}; 
-   int y_values[13] = {0};
-   int x_cord, y_cord;
+void GameMechs::generateFood(objPosArrayList* blockOff) 
+{
+    int diffPos = 0;
+    int x_values[28] = {0};
+    int y_values[13] = {0};
+    int x_cord, y_cord;
 
-
-    do {
-        x_cord = rand() % 28; //gives a value [0,27]
-        
-        if(x_values[x_cord] == 0)
-        {
-            x_values[x_cord] = 1;
-            new_items++;
-        }
-    }
-    while(new_items < blockOff -> getSize()); //assuming blockOff -> getSize() gives the number of food items to be generated
-    
-    new_items = 0;
-    do {
-        y_cord = rand() % 13; //gives a value [0,13]
-        
-        if(y_values[y_cord] == 0)
-        {
-            y_values[y_cord] = 1;
-            new_items++;
-        }
-    }
-    while(new_items < blockOff -> getSize());
-
-    for(int i = 0; i < blockOff -> getSize(); i++)
+    while(!diffPos)
     {
-       for(int j = 0; j < 28; j++)
-       {
-            if(x_values[j] == 1)
+        x_cord = rand() % 28;
+        y_cord = rand() % 13;
+        for(int i = 0; i < blockOff -> getSize(); i++)
+            if(blockOff -> getElement(i).pos -> x == x_cord && blockOff -> getElement(i).pos -> y == y_cord)
             {
-                blockOff -> getElement(i).pos -> x = j; //BlockOff is a pointer -> to dereference and use getElement(index). is .pos part of an object? (why can you just do .pos)
-                //part of the objPos class is also a pointer and must dereference to get the x value 
-                x_values[j] = 0;
+                diffPos = 0;
                 break;
             }
-       } 
-
-        for(int j = 0; j < 13; j++)
-        {
-            if(y_values[j] == 1)
+            else
             {
-                blockOff -> getElement(i).pos -> y = j; //BlockOff is a pointer -> to dereference and use getElement(index). is .pos part of an object? (why can you just do .pos)
-                //part of the objPos class is also a pointer and must dereference to get the x value 
-                y_values[j] = 0;
-                break;
+                diffPos = 1;
             }
-        }
     }
+    
+    food.setFoodPos(x_cord, y_cord);
+    
+    }
+
+objPos GameMechs::getfoodPos()
+{
+    return food.getFoodPos();
 }
