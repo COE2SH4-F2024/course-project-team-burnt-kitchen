@@ -100,34 +100,34 @@ void GameMechs::clearInput()
 }
 
 // More methods should be added here
-void GameMechs::generateFood(objPosArrayList* blockOff) 
-{
-    int diffPos = 0;
-    int x_values[28] = {0};
-    int y_values[13] = {0};
-    int x_cord, y_cord;
+// void GameMechs::generateFood(objPosArrayList* blockOff) 
+// {
+//     int diffPos = 0;
+//     int x_values[28] = {0};
+//     int y_values[13] = {0};
+//     int x_cord, y_cord;
 
-    while(!diffPos)
-    {
-        x_cord = rand() % 28;
-        y_cord = rand() % 13;
-        for(int i = 0; i < blockOff -> getSize(); i++)
-            if(blockOff -> getElement(i).pos -> x == x_cord && blockOff -> getElement(i).pos -> y == y_cord)
-            {
-                diffPos = 0;
-                break;
-            }
-            else
-            {
-                diffPos = 1;
-            }
-    }
+//     while(!diffPos)
+//     {
+//         x_cord = rand() % 28;
+//         y_cord = rand() % 13;
+//         for(int i = 0; i < blockOff -> getSize(); i++)
+//             if(blockOff -> getElement(i).pos -> x == x_cord && blockOff -> getElement(i).pos -> y == y_cord)
+//             {
+//                 diffPos = 0;
+//                 break;
+//             }
+//             else
+//             {
+//                 diffPos = 1;
+//             }
+//     }
     
-    food.setFoodPos(x_cord, y_cord);
+//     food.setFoodPos(x_cord, y_cord);
     
-    }
+//     }
 
-objPos GameMechs::getfoodPos()
-{
-    return food.getFoodPos();
-}
+// objPos GameMechs::getfoodPos()
+// {
+//     return food.getFoodPos();
+// }

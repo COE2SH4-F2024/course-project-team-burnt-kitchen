@@ -19,6 +19,7 @@ void CleanUp(void);
 
 GameMechs * game;
 Player * player;
+Food * food;
 
 int main(void)
 {
@@ -45,7 +46,9 @@ void Initialize(void)
 
     game = new GameMechs();
     player = new Player(game);
-    game -> generateFood(player->getPlayerPosList());
+    food = new Food();
+
+    food -> generateFood(player -> getPlayerPosList());
     
 }
 
@@ -83,9 +86,9 @@ void DrawScreen(void)
             //     MacUILib_printf("%c", (player -> getPlayerHead()).symbol);
             // } else 
             } 
-            else if (i == (game -> getfoodPos().pos -> y)+1 && j == (game -> getfoodPos().pos -> x) + 1) 
+            else if (i == (food -> getFoodPos().pos -> y)+1 && j == (food -> getFoodPos().pos -> x) + 1) 
             {
-                MacUILib_printf("%c", game -> getfoodPos().symbol);
+                MacUILib_printf("%c", food -> getFoodPos().symbol);
             }
             else {
                 // not player, not border. check if any item positions match
@@ -108,7 +111,7 @@ void DrawScreen(void)
     }   
     MacUILib_printf("HELLO\n");
     playerPosList -> printList();
-    MacUILib_printf("y: %d x: %d", (game -> getfoodPos().pos -> y) + 1, (game -> getfoodPos().pos -> x)+1);
+    MacUILib_printf("y: %d x: %d", (food -> getFoodPos().pos -> y) + 1, (food -> getFoodPos().pos -> x)+1);
 
 }
 

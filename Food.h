@@ -2,6 +2,8 @@
 #define FOOD_H
 
 #include "objPos.h" 
+#include "objPosArrayList.h"
+#include <cstdlib>
 class Food 
 {
     public:
@@ -12,6 +14,7 @@ class Food
         objPos getFoodPos() const;
         void setFoodPos(objPos obj);
         void setFoodPos(int newX, int newY);
+        void generateFood(objPosArrayList* blockOff);
 
     private:
         objPos foodPos;
