@@ -29,6 +29,7 @@ class Player
         // More methods to be added here
         objPos getPlayerHead();
         void increasePlayerLength(int x);
+        bool checkFoodConsumption();
 
     private:
         objPos playerPos; // Upgrade this in iteration 3. 

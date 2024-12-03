@@ -47,8 +47,7 @@ void Initialize(void)
     game = new GameMechs();
     food = new Food();
     player = new Player(game, food);
-
-    food -> generateFood(player -> getPlayerPosList()); //not generating random positons
+    food -> generateFood(player -> getPlayerPosList()); 
 }
 
 void GetInput(void)
@@ -64,6 +63,12 @@ void RunLogic(void)
     player -> updatePlayerDir();
     player -> movePlayer();
     game -> clearInput();
+    if(player -> checkFoodConsumption())
+    {
+        game -> incrementScore();
+        player -> increasePlayerLength(1);
+        food -> generateFood(player -> getPlayerPosList()); 
+    }
 }
 
 void DrawScreen(void)
@@ -127,7 +132,7 @@ void DrawScreen(void)
 
 void LoopDelay(void)
 {
-    MacUILib_Delay(DELAY_CONST); // 0.1s delay
+    MacUILib_Delay(999999); // 0.1s delay DELAY_CONST
 }
 
 
