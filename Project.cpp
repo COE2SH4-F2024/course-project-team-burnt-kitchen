@@ -63,13 +63,13 @@ void RunLogic(void)
     game -> clearInput();
     if(player -> checkFoodConsumption() == '$')
     {
-        game -> incrementScore();
+        game -> incrementScore(100);
         player -> increasePlayerLength(1);
         food -> generateFood(player -> getPlayerPosList()); 
     }
     else if(player -> checkFoodConsumption() == '%')
     {
-        game -> incrementScore();
+        game -> incrementScore(500);
         player -> increasePlayerLength(3);
         food -> generateFood(player -> getPlayerPosList()); 
     }
@@ -122,14 +122,16 @@ void DrawScreen(void)
 
         }
         MacUILib_printf("\n");
-    }   
-    playerPosList -> printList();    
+    }
+    MacUILib_printf("Score: %d\n", game -> getScore());   
+    MacUILib_printf("Snake Length: %d\n", player -> getPlayerPosList() -> getSize());
+    
 
 }
 
 void LoopDelay(void)
 {
-    MacUILib_Delay(DELAY_CONST); // 0.1s delay DELAY_CONST
+    MacUILib_Delay(DELAY_CONST); // 0.1s delay
 }
 
 
