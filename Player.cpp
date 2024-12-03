@@ -12,12 +12,7 @@ Player::Player(GameMechs* thisGMRef, Food* foodRef)
     // playerPos = objPos(3, 3, '@');
     playerPosList = new objPosArrayList();
     playerPosList -> insertHead(objPos(2, 3, '@'));
-    // playerPosList -> insertTail(objPos(3, 3, '@'));
-    // playerPosList -> insertTail(objPos(4, 3, '@'));
     growCount = 0;
-    // playerPosList -> insertHead(objPos(3, 4, '@'));
-    // playerPosList -> insertHead(objPos(3, 5, '@'));
-    // playerPosList -> insertHead(objPos(3, 6, '@'));
 
 }
 
@@ -106,8 +101,6 @@ void Player::movePlayer()
     } else {
         playerPosList -> removeTail();
     }
-    // getPlayerHead().pos -> x = x;
-    // getPlayerHead().pos -> y = y;
 
 }
 
@@ -136,5 +129,4 @@ bool Player::checkSelfCollision() {
         if(mainGameMechsRef -> isSamePosition(getPlayerHead(), getPlayerPosList() -> getElement(i))) return true;
     }
     return false;
-    // return mainGameMechsRef -> hasOverlap(getPlayerHead(), getPlayerPosList());
 }

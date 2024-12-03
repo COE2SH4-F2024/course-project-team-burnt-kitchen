@@ -89,21 +89,11 @@ void DrawScreen(void)
     objPosArrayList* playerPosList;
 
     // drawing routine
-    // int x, y;
     for(i=0;i<game -> getBoardSizeY();i++) {
         for(j=0;j<game -> getBoardSizeX();j++) {
-            // x = (player -> getPlayerHead()).pos -> x;
-            // y = (player -> getPlayerHead()).pos -> y;
             if(i == 0 || i == game -> getBoardSizeY()-1 || j == 0 || j == game -> getBoardSizeX()-1) {
                 MacUILib_printf("#");
-            // } else if(x+1 == j && y+1 == i) {
-            //     MacUILib_printf("%c", (player -> getPlayerHead()).symbol);
-            // } else 
             } 
-            // else if (i == (food -> getFoodBucket() -> getElement(k).pos -> y)+1 && j == (food -> getFoodBucket() -> getElement(k).pos -> x) + 1) 
-            // {
-            //     MacUILib_printf("%c", food -> getFoodPos().symbol);
-            // }
             else {
                 // not player, not border. check if any item positions match
                 spaceFlag = 1;
@@ -133,9 +123,7 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }   
-    playerPosList -> printList();
-    // MacUILib_printf("y: %d x: %d", (food -> getFoodPos().pos -> y) + 1, (food -> getFoodPos().pos -> x)+1);
-    
+    playerPosList -> printList();    
 
 }
 
