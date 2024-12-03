@@ -5,12 +5,18 @@
 Food::Food()
 {
     foodCount = 5;
-    foodBucket = new objPos[foodCount];
-    foodBucket[0] = {2, 5, '$'};
-    foodBucket[1] = {3, 5, '$'};
-    foodBucket[2] = {4, 5, '$'};
-    foodBucket[3] = {5, 5, '$'};
-    foodBucket[4] = {6, 5, '$'};
+    foodBucket = new objPosArrayList();
+    // foodBucket -> insertTail(objPos(0, 0, '$'));
+    // foodBucket -> insertTail(objPos(0, 0, '$'));
+    // foodBucket -> insertTail(objPos(0, 0, '$'));
+    // foodBucket -> insertTail(objPos(0, 0, '$'));
+    // foodBucket -> insertTail(objPos(0, 0, '$'));
+    // foodBucket = new objPos[foodCount];
+    // foodBucket[0] = {2, 5, '$'};
+    // foodBucket[1] = {3, 5, '$'};
+    // foodBucket[2] = {4, 5, '$'};
+    // foodBucket[3] = {5, 5, '$'};
+    // foodBucket[4] = {6, 5, '$'};
 }
 
 Food::~Food()
@@ -23,7 +29,9 @@ void Food::generateFood(objPosArrayList* blockOff)
     int diffPos;
     int x_cord, y_cord;
     char symbol = '$';
-
+    while (getFoodBucket() -> getSize() > 0) {
+        getFoodBucket() -> removeTail();
+    }
     for(int i = 0; i < foodCount; i++)
     {
         diffPos = 0;
@@ -44,17 +52,17 @@ void Food::generateFood(objPosArrayList* blockOff)
         }
         if(i <= 2)
         {
-            getFoodBucket()[i].setObjPos(x_cord, y_cord, '$');
+            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '$'));
         }
         else
         {
-            getFoodBucket()[i].setObjPos(x_cord, y_cord, '%');
+            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '%'));
         }
     }
     
 }
 
-objPos* Food::getFoodBucket() const
+objPosArrayList* Food::getFoodBucket() const
 {
     return foodBucket;
 }

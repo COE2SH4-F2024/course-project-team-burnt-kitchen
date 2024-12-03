@@ -106,9 +106,9 @@ void DrawScreen(void)
                     }
                 }
 
-                for(int k=0;k < 5;k++) {
-                    if(food -> getFoodBucket()[k].pos -> x == j-1 && food -> getFoodBucket()[k].pos -> y == i-1) {
-                        MacUILib_printf("%c", (food -> getFoodBucket()[k].symbol));
+                for(int k=0;k < food -> getFoodCount();k++) {
+                    if(food -> getFoodBucket() -> getElement(k).pos -> x == j-1 && food -> getFoodBucket() -> getElement(k).pos -> y == i-1) {
+                        MacUILib_printf("%c", (food -> getFoodBucket() -> getElement(k).symbol));
                         spaceFlag = 0;
                         break;
                     }
@@ -132,7 +132,7 @@ void DrawScreen(void)
 
 void LoopDelay(void)
 {
-    MacUILib_Delay(999999); // 0.1s delay DELAY_CONST
+    MacUILib_Delay(DELAY_CONST); // 0.1s delay DELAY_CONST
 }
 
 
