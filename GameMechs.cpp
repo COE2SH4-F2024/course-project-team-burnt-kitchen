@@ -77,6 +77,10 @@ int GameMechs::getBoardSizeY() const
     return boardSizeY;
 }
 
+int GameMechs:: getBoardAreaNoBorder() const
+{
+    return (boardSizeX-2)*(boardSizeY-2);
+}
 
 void GameMechs::setExitTrue()
 {

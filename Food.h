@@ -21,6 +21,7 @@ class Food
         objPosArrayList* getFoodBucket() const;
         void generateFood(objPosArrayList* blockOff);
         int getFoodCount() const;
+        void setFoodCount(int x);
 
     private:
         GameMechs* mainGameMechsRef;

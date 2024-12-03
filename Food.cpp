@@ -28,7 +28,6 @@ void Food::generateFood(objPosArrayList* blockOff)
 {
     int diffPos;
     int x_cord, y_cord;
-    char symbol = '$';
     //Removes all the existing objects in the food bucket
     while (getFoodBucket() -> getSize() > 0) 
     {
@@ -57,11 +56,11 @@ void Food::generateFood(objPosArrayList* blockOff)
         //Creates 3 normal items and 2 special items 
         if(i <= 2)
         {
-            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '$'));
+            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '@'));
         }
         else
         {
-            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '%'));
+            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '$'));
         }
     }
     
@@ -75,4 +74,8 @@ objPosArrayList* Food::getFoodBucket() const
 int Food::getFoodCount() const
 {
     return foodCount;
+}
+
+void Food::setFoodCount(int x) {
+    foodCount = x;
 }

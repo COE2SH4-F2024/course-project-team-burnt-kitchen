@@ -43,6 +43,10 @@ class GameMechs
 
         int getBoardSizeX() const;
         int getBoardSizeY() const;
+        /**
+         * Get area of board, excluding the borders
+         */
+        int getBoardAreaNoBorder() const;
         
         int getScore() const;
         void incrementScore();

@@ -73,13 +73,13 @@ void RunLogic(void)
     // Collision Logic
     // Checking if the player hit a normal food, special food or itself
     char consumed = player -> checkFoodConsumption();
-    if(consumed == '$')
+    if(consumed == '@')
     {
         game -> incrementScore(100);
         player -> increasePlayerLength(1);
         food -> generateFood(player -> getPlayerPosList()); 
     }
-    else if(consumed == '%')
+    else if(consumed == '$')
     {
         game -> incrementScore(500);
         player -> increasePlayerLength(3);
@@ -89,6 +89,10 @@ void RunLogic(void)
     if(player -> checkSelfCollision()) {
         game -> setLoseFlag();
         game -> setExitTrue();
+    }
+    int emptySpacesLeft = game -> getBoardAreaNoBorder() - player -> getPlayerPosList() -> getSize();
+    if(emptySpacesLeft < 5) {
+        food -> setFoodCount(0);
     }
     
 }
@@ -119,6 +123,7 @@ void DrawScreen(void)
                 currentPos = objPos(j-1, i-1, '\0'); 
 
                 spaceFlag = 1;
+                // draw player
                 playerPosList = player -> getPlayerPosList();
                 for(int k=0;k<playerPosList -> getSize();k++) {
                     currentSymbol = playerPosList -> getElement(k).getSymbolIfPosEqual(&currentPos);
@@ -128,7 +133,7 @@ void DrawScreen(void)
                         break;
                     }
                 }
-
+                // draw food
                 for(int k=0;k < food -> getFoodCount();k++) {
                     currentSymbol = food -> getFoodBucket() -> getElement(k).getSymbolIfPosEqual(&currentPos);
                     if(currentSymbol) {
@@ -149,8 +154,13 @@ void DrawScreen(void)
     }
 
     //Additional Info for Player HUD
+    MacUILib_printf("================\n");
+    MacUILib_printf("@: +100 pts | + 1 snake length\n");
+    MacUILib_printf("$: +500 pts | + 3 snake length");
+    MacUILib_printf("\n================\n");
     MacUILib_printf("Score: %d\n", game -> getScore());   
     MacUILib_printf("Snake Length: %d\n", player -> getPlayerPosList() -> getSize());
+    MacUILib_printf("================\n");
     
 
 }
