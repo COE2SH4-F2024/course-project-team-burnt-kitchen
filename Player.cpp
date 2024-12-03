@@ -78,6 +78,7 @@ void Player::movePlayer()
     if(myDir == STOP) return;
     int x = getPlayerHead().pos -> x;
     int y = getPlayerHead().pos -> y;
+    // WRAPAROUND LOGIC
     if(myDir == UP) {
         y--;
         if(y < 0) {
