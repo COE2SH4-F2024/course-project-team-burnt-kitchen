@@ -4,8 +4,8 @@
 
 Food::Food()
 {
-
-    foodBucket = new objPos[5];
+    foodCount = 5;
+    foodBucket = new objPos[foodCount];
     foodBucket[0] = {2, 5, '$'};
     foodBucket[1] = {3, 5, '$'};
     foodBucket[2] = {4, 5, '$'};
@@ -24,7 +24,7 @@ void Food::generateFood(objPosArrayList* blockOff)
     int x_cord, y_cord;
     char symbol = '$';
 
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < foodCount; i++)
     {
         diffPos = 0;
         while(!diffPos)

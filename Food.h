@@ -8,18 +8,14 @@ class Food
 {
     public:
         Food();
-        Food(int x, int y);
         ~Food();
         // void generateFood(objPos blockOff);
-        objPos getFoodPos() const;
-        objPos* getFoodBucket() const;
-        void setFoodPos(objPos obj);
-        void setFoodPos(int newX, int newY);
+        objPos* getFoodBucket() const;;
         void generateFood(objPosArrayList* blockOff);
 
     private:
-        objPos foodPos;
         objPos* foodBucket;
+        int foodCount;
 };
 
 
