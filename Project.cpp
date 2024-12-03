@@ -48,8 +48,7 @@ void Initialize(void)
     player = new Player(game);
     food = new Food();
 
-    food -> generateFood(player -> getPlayerPosList());
-    
+    food -> generateFood(player -> getPlayerPosList()); //not generating random positons
 }
 
 void GetInput(void)
@@ -70,7 +69,7 @@ void RunLogic(void)
 void DrawScreen(void)
 {
     MacUILib_clearScreen(); 
-    int i, j;
+    int i, j, k;
     int spaceFlag = 1;
     objPosArrayList* playerPosList;
 
@@ -86,10 +85,10 @@ void DrawScreen(void)
             //     MacUILib_printf("%c", (player -> getPlayerHead()).symbol);
             // } else 
             } 
-            else if (i == (food -> getFoodPos().pos -> y)+1 && j == (food -> getFoodPos().pos -> x) + 1) 
-            {
-                MacUILib_printf("%c", food -> getFoodPos().symbol);
-            }
+            // else if (i == (food -> getFoodBucket() -> getElement(k).pos -> y)+1 && j == (food -> getFoodBucket() -> getElement(k).pos -> x) + 1) 
+            // {
+            //     MacUILib_printf("%c", food -> getFoodPos().symbol);
+            // }
             else {
                 // not player, not border. check if any item positions match
                 spaceFlag = 1;
@@ -101,6 +100,16 @@ void DrawScreen(void)
                         break;
                     }
                 }
+
+                for(int k=0;k < 5;k++) {
+                    if(food -> getFoodBucket()[k].pos -> x == j-1 && food -> getFoodBucket()[k].pos -> y == i-1) {
+                        MacUILib_printf("%c", (food -> getFoodBucket()[k].symbol));
+                        spaceFlag = 0;
+                        break;
+                    }
+                }
+
+
                 if(spaceFlag) {
                     MacUILib_printf(" ");
                 }
@@ -112,6 +121,7 @@ void DrawScreen(void)
     MacUILib_printf("HELLO\n");
     playerPosList -> printList();
     MacUILib_printf("y: %d x: %d", (food -> getFoodPos().pos -> y) + 1, (food -> getFoodPos().pos -> x)+1);
+    
 
 }
 

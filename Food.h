@@ -12,12 +12,14 @@ class Food
         ~Food();
         // void generateFood(objPos blockOff);
         objPos getFoodPos() const;
+        objPos* getFoodBucket() const;
         void setFoodPos(objPos obj);
         void setFoodPos(int newX, int newY);
         void generateFood(objPosArrayList* blockOff);
 
     private:
         objPos foodPos;
+        objPos* foodBucket;
 };
 
 

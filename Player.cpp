@@ -96,6 +96,8 @@ void Player::movePlayer()
     }
     objPos newHead = objPos(x, y, sym);
     cout << "A: " << newHead.pos -> x << ", " << newHead.pos -> y << endl;
+
+    
     playerPosList -> insertHead(newHead);
     playerPosList -> removeTail();
     // getPlayerHead().pos -> x = x;
