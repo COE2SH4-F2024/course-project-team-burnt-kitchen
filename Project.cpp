@@ -90,10 +90,10 @@ void RunLogic(void)
         game -> setLoseFlag();
         game -> setExitTrue();
     }
-    int emptySpacesLeft = game -> getBoardAreaNoBorder() - player -> getPlayerPosList() -> getSize();
-    if(emptySpacesLeft < 5) {
-        food -> setFoodCount(0);
-    }
+    // int emptySpacesLeft = game -> getBoardAreaNoBorder() - player -> getPlayerPosList() -> getSize();
+    // if(emptySpacesLeft < 5) {
+    //     food -> setFoodCount(0);
+    // }
     
 }
 
