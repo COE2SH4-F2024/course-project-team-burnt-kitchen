@@ -65,9 +65,13 @@ void GetInput(void)
 
 void RunLogic(void)
 {
+    //Player movement 
     player -> updatePlayerDir();
     player -> movePlayer();
     game -> clearInput();
+
+    //Collision Logic
+    //Checking if the player hit a normal food, special food or itself
     if(player -> checkFoodConsumption() == '$')
     {
         game -> incrementScore(100);
@@ -130,6 +134,7 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }
+    //Additional Info for Player HUD
     MacUILib_printf("Score: %d\n", game -> getScore());   
     MacUILib_printf("Snake Length: %d\n", player -> getPlayerPosList() -> getSize());
     
