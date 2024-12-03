@@ -45,8 +45,8 @@ class GameMechs
         void incrementScore(int s);
         
         // More methods should be added here
-        int isSamePosition(objPos obj1, objPos obj2);
-        int hasOverlap(objPos obj, objPosArrayList* objList);
+        bool isSamePosition(objPos obj1, objPos obj2);
+        bool hasOverlap(objPos obj, objPosArrayList* objList);
 };
 
 #endif

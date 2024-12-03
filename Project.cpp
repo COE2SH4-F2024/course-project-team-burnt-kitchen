@@ -8,8 +8,6 @@ using namespace std;
 
 #define DELAY_CONST 100000
 
-bool exitFlag;
-
 void Initialize(void);
 void GetInput(void);
 void RunLogic(void);
@@ -26,7 +24,7 @@ int main(void)
 
     Initialize();
 
-    while(exitFlag == false)  
+    while(!(game -> getExitFlagStatus()))  
     {
         GetInput();
         RunLogic();
@@ -69,6 +67,12 @@ void RunLogic(void)
         player -> increasePlayerLength(1);
         food -> generateFood(player -> getPlayerPosList()); 
     }
+
+    if(player -> checkSelfCollision()) {
+        game -> setLoseFlag();
+        game -> setExitTrue();
+    }
+    
 }
 
 void DrawScreen(void)
@@ -123,7 +127,6 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }   
-    MacUILib_printf("HELLO\n");
     playerPosList -> printList();
     // MacUILib_printf("y: %d x: %d", (food -> getFoodPos().pos -> y) + 1, (food -> getFoodPos().pos -> x)+1);
     
