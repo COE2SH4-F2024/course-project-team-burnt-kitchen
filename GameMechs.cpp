@@ -105,9 +105,9 @@ bool GameMechs::isSamePosition(objPos obj1, objPos obj2) {
     return false;
 }
 
-bool GameMechs::hasOverlap(objPos obj, objPosArrayList* objList) {
-    for(int i=0;i<objList -> getSize();i++) {
-        if(isSamePosition(obj, objList->getElement(i))) return true;
-    }
-    return false;
-}
+// bool GameMechs::hasOverlap(objPos obj, objPosArrayList* objList) {
+//     for(int i=0;i<objList -> getSize();i++) {
+//         if(isSamePosition(obj, objList->getElement(i))) return true;
+//     }
+//     return false;
+// }

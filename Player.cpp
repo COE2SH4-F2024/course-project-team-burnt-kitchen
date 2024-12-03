@@ -69,16 +69,19 @@ void Player::updatePlayerDir()
     }       
 }
 
+/**
+ * Move the player in the direction given by `myDir`
+ * 
+ */
 void Player::movePlayer()
 {
-    // PPA3 Finite State Machine logic
     if(myDir == STOP) return;
     int x = getPlayerHead().pos -> x;
     int y = getPlayerHead().pos -> y;
     if(myDir == UP) {
         y--;
         if(y < 0) {
-            y = (mainGameMechsRef -> getBoardSizeY())-3;
+            y = (mainGameMechsRef -> getBoardSizeY())-3;  // -3 
         }
     } else if (myDir == DOWN) {
         y = (y + 1) % ((mainGameMechsRef -> getBoardSizeY())-2);
@@ -102,7 +105,7 @@ void Player::movePlayer()
 
 }
 
-// More methods to be added
+
 objPos Player::getPlayerHead() {
     return playerPosList -> getHeadElement();
 }
@@ -111,10 +114,14 @@ void Player::increasePlayerLength(int x) {
     growCount += x;
 }
 
+/**
+ * Checks if the player head has collided with any food on the playing field
+ * @return The symbol of the food that was consumed OR 0 if no collision with food
+ */
 char Player::checkFoodConsumption() {
     for(int i=0; i < 5; i++)
     {
-        if(getPlayerHead().pos -> x == food -> getFoodBucket() -> getElement(i).pos -> x && getPlayerHead().pos -> y == food -> getFoodBucket() -> getElement(i).pos -> y)
+        if(mainGameMechsRef -> isSamePosition(getPlayerHead(), food -> getFoodBucket() -> getElement(i))) 
         {
             return food -> getFoodBucket() -> getElement(i).symbol;
         }
@@ -122,6 +129,10 @@ char Player::checkFoodConsumption() {
     return 0;
 }
 
+/**
+ * Checks if the player head has collided with any other pieces of the player body.
+ * @return true/false
+ */
 bool Player::checkSelfCollision() {
     for(int i=1;i<getPlayerPosList() -> getSize();i++) {
         if(mainGameMechsRef -> isSamePosition(getPlayerHead(), getPlayerPosList() -> getElement(i))) return true;
