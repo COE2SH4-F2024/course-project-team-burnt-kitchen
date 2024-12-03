@@ -29,7 +29,7 @@ class Player
         // More methods to be added here
         objPos getPlayerHead();
         void increasePlayerLength(int x);
-        bool checkFoodConsumption();
+        char checkFoodConsumption();
         bool checkSelfCollision();
 
     private:

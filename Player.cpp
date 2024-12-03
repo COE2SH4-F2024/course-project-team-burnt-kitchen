@@ -120,15 +120,15 @@ void Player::increasePlayerLength(int x) {
     growCount += x;
 }
 
-bool Player::checkFoodConsumption() {
+char Player::checkFoodConsumption() {
     for(int i=0; i < 5; i++)
     {
         if(getPlayerHead().pos -> x == food -> getFoodBucket() -> getElement(i).pos -> x && getPlayerHead().pos -> y == food -> getFoodBucket() -> getElement(i).pos -> y)
         {
-            return true;
+            return food -> getFoodBucket() -> getElement(i).symbol;
         }
     }
-    return false;
+    return 0;
 }
 
 bool Player::checkSelfCollision() {

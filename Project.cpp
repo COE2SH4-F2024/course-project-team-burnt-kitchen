@@ -61,10 +61,16 @@ void RunLogic(void)
     player -> updatePlayerDir();
     player -> movePlayer();
     game -> clearInput();
-    if(player -> checkFoodConsumption())
+    if(player -> checkFoodConsumption() == '$')
     {
         game -> incrementScore();
         player -> increasePlayerLength(1);
+        food -> generateFood(player -> getPlayerPosList()); 
+    }
+    else if(player -> checkFoodConsumption() == '%')
+    {
+        game -> incrementScore();
+        player -> increasePlayerLength(3);
         food -> generateFood(player -> getPlayerPosList()); 
     }
 
