@@ -58,3 +58,8 @@ objPos* Food::getFoodBucket() const
 {
     return foodBucket;
 }
+
+int Food::getFoodCount() const
+{
+    return foodCount;
+}

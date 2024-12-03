@@ -4,15 +4,17 @@
 using namespace std;
 
 
-Player::Player(GameMechs* thisGMRef)
+Player::Player(GameMechs* thisGMRef, Food* foodRef)
 {
     mainGameMechsRef = thisGMRef;
+    food = foodRef;
     myDir = STOP;
     playerPos = objPos(3, 3, '@');
     playerPosList = new objPosArrayList();
     playerPosList -> insertHead(objPos(2, 3, '@'));
     playerPosList -> insertTail(objPos(3, 3, '@'));
     playerPosList -> insertTail(objPos(4, 3, '@'));
+    growCount = 0;
     // playerPosList -> insertHead(objPos(3, 4, '@'));
     // playerPosList -> insertHead(objPos(3, 5, '@'));
     // playerPosList -> insertHead(objPos(3, 6, '@'));
@@ -99,7 +101,11 @@ void Player::movePlayer()
 
     
     playerPosList -> insertHead(newHead);
-    playerPosList -> removeTail();
+    if(growCount > 0) {
+        growCount--;
+    } else {
+        playerPosList -> removeTail();
+    }
     // getPlayerHead().pos -> x = x;
     // getPlayerHead().pos -> y = y;
 
@@ -110,6 +116,6 @@ objPos Player::getPlayerHead() {
     return playerPosList -> getHeadElement();
 }
 
-void increasePlayerLength() {
-    
+void Player::increasePlayerLength(int x) {
+    growCount += x;
 }

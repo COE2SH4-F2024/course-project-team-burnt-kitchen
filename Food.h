@@ -10,8 +10,9 @@ class Food
         Food();
         ~Food();
         // void generateFood(objPos blockOff);
-        objPos* getFoodBucket() const;;
+        objPos* getFoodBucket() const;
         void generateFood(objPosArrayList* blockOff);
+        int getFoodCount() const;
 
     private:
         objPos* foodBucket;

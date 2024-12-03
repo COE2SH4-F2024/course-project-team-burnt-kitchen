@@ -45,8 +45,8 @@ void Initialize(void)
     MacUILib_clearScreen();
 
     game = new GameMechs();
-    player = new Player(game);
     food = new Food();
+    player = new Player(game, food);
 
     food -> generateFood(player -> getPlayerPosList()); //not generating random positons
 }
@@ -120,7 +120,7 @@ void DrawScreen(void)
     }   
     MacUILib_printf("HELLO\n");
     playerPosList -> printList();
-    MacUILib_printf("y: %d x: %d", (food -> getFoodPos().pos -> y) + 1, (food -> getFoodPos().pos -> x)+1);
+    // MacUILib_printf("y: %d x: %d", (food -> getFoodPos().pos -> y) + 1, (food -> getFoodPos().pos -> x)+1);
     
 
 }
