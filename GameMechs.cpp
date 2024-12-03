@@ -99,15 +99,3 @@ void GameMechs::clearInput()
 {
     input = '\0';
 }
-
-bool GameMechs::isSamePosition(objPos obj1, objPos obj2) {
-    if(obj1.pos -> x == obj2.pos -> x && obj1.pos -> y == obj2.pos -> y) return true;
-    return false;
-}
-
-// bool GameMechs::hasOverlap(objPos obj, objPosArrayList* objList) {
-//     for(int i=0;i<objList -> getSize();i++) {
-//         if(isSamePosition(obj, objList->getElement(i))) return true;
-//     }
-//     return false;
-// }

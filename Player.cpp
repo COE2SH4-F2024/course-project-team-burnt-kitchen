@@ -128,9 +128,10 @@ void Player::increasePlayerLength(int x) {
  * @return The symbol of the food that was consumed OR 0 if no collision with food
  */
 char Player::checkFoodConsumption() {
+    objPos playerHead = getPlayerHead();
     for(int i=0; i < 5; i++)
     {
-        if(mainGameMechsRef -> isSamePosition(getPlayerHead(), food -> getFoodBucket() -> getElement(i))) 
+        if(food -> getFoodBucket() -> getElement(i).isPosEqual(&playerHead))
         {
             return food -> getFoodBucket() -> getElement(i).symbol;
         }
@@ -143,8 +144,9 @@ char Player::checkFoodConsumption() {
  * @return true/false
  */
 bool Player::checkSelfCollision() {
+    objPos playerHead = getPlayerHead();
     for(int i=1;i<getPlayerPosList() -> getSize();i++) {
-        if(mainGameMechsRef -> isSamePosition(getPlayerHead(), getPlayerPosList() -> getElement(i))) return true;
+        if(getPlayerPosList() -> getElement(i).isPosEqual(&playerHead)) return true;
     }
     return false;
 }
