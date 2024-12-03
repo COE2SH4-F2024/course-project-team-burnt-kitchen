@@ -20,7 +20,7 @@ class Player
 
         Player(GameMechs* thisGMRef, Food* foodRef);
         ~Player();
-        
+
         objPosArrayList* getPlayerPosList() const;   
         void updatePlayerDir();
         void movePlayer();
@@ -34,7 +34,7 @@ class Player
     private:
         objPosArrayList* playerPosList;      
         enum Dir myDir;
-        char const sym = '@';
+        char const sym = '*';
         GameMechs* mainGameMechsRef;
         Food* food;
         int growCount = 0;

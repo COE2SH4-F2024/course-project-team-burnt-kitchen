@@ -6,7 +6,6 @@
  */
 
 #include "GameMechs.h"
-//the logic behind the game running and the board 
 
 GameMechs::GameMechs()
 {
@@ -30,7 +29,6 @@ GameMechs::GameMechs(int boardX, int boardY)
     srand(time(NULL));
 }
 
-// do you need a destructor?
 GameMechs::~GameMechs()
 {
     // nothing to deallocate, no heap data members

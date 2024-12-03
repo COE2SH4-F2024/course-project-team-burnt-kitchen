@@ -30,7 +30,7 @@ class GameMechs
     public:
         GameMechs();
         GameMechs(int boardX, int boardY);
-        ~GameMechs(); // is this one needed at all? Why or why not?
+        ~GameMechs();
         
         bool getExitFlagStatus() const; 
         void setExitTrue();

@@ -17,7 +17,7 @@ Player::Player(GameMechs* thisGMRef, Food* foodRef)
     food = foodRef;
     myDir = STOP;
     playerPosList = new objPosArrayList();
-    playerPosList -> insertHead(objPos(2, 3, '@'));
+    playerPosList -> insertHead(objPos(2, 3, sym));
     growCount = 0;
 
 }
