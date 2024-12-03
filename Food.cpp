@@ -26,42 +26,50 @@ Food::~Food()
  */
 void Food::generateFood(objPosArrayList* blockOff) 
 {
-    int diffPos;
-    int x_cord, y_cord;
+    bool validNewPos;
     //Removes all the existing objects in the food bucket
     while (getFoodBucket() -> getSize() > 0) 
     {
         getFoodBucket() -> removeTail();
     } 
+    // Generate new food
+    objPos newFood;
     for(int i = 0; i < foodCount; i++)
     {
-        diffPos = 0;
-        while(!diffPos)
-        {
+        // 3 normal items, 2 special items
+        if (i <= 2) {
+            newFood = objPos(0, 0, '@');
+        } else {
+            newFood = objPos(0, 0, '$');
+        }
+        validNewPos = true;
+        do {
             //Generates random x and y values within the game board
-            x_cord = rand() % (mainGameMechsRef -> getBoardSizeX()-2);
-            y_cord = rand() % (mainGameMechsRef -> getBoardSizeY()-2);
+            newFood.pos -> x = rand() % (mainGameMechsRef -> getBoardSizeX()-2);
+            newFood.pos -> y = rand() % (mainGameMechsRef -> getBoardSizeY()-2);
+
+
             for(int j = 0; j < blockOff -> getSize(); j++)
+            {
                 //Checks the all the existing player position and compares them to the randomly generated x and y values
-                if(blockOff -> getElement(i).pos -> x == x_cord && blockOff -> getElement(i).pos -> y == y_cord)
+                if(blockOff -> getElement(j).isPosEqual(&newFood))
                 {
-                    diffPos = 0;
+                    validNewPos = false;
                     break;
                 }
-                else
+            }
+            if(validNewPos) {
+                for(int j=0; j < getFoodBucket() -> getSize(); j++) 
                 {
-                    diffPos = 1;
+                    if(getFoodBucket() -> getElement(j).isPosEqual(&newFood)) 
+                    {
+                        validNewPos = false;
+                        break;
+                    }
                 }
-        }
-        //Creates 3 normal items and 2 special items 
-        if(i <= 2)
-        {
-            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '@'));
-        }
-        else
-        {
-            getFoodBucket() -> insertTail(objPos(x_cord, y_cord, '$'));
-        }
+            }
+        } while(!validNewPos);
+        getFoodBucket() -> insertTail(newFood);
     }
     
 }

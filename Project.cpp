@@ -154,14 +154,31 @@ void DrawScreen(void)
     }
 
     //Additional Info for Player HUD
-    MacUILib_printf("================\n");
-    MacUILib_printf("@: +100 pts | + 1 snake length\n");
-    MacUILib_printf("$: +500 pts | + 3 snake length");
-    MacUILib_printf("\n================\n");
-    MacUILib_printf("Score: %d\n", game -> getScore());   
-    MacUILib_printf("Snake Length: %d\n", player -> getPlayerPosList() -> getSize());
-    MacUILib_printf("================\n");
-    
+    if(!game -> getExitFlagStatus()) {
+        MacUILib_printf("===================\n");
+        MacUILib_printf("WASD to move\n");
+        MacUILib_printf("@: +100 pts | + 1 snake length\n");
+        MacUILib_printf("$: +500 pts | + 3 snake length\n");
+        MacUILib_printf("===================\n");
+        MacUILib_printf("Score: %d\n", game -> getScore());   
+        MacUILib_printf("Snake Length: %d\n", player -> getPlayerPosList() -> getSize());
+        MacUILib_printf("===================\n");
+    }
+    else {
+        // exit/lose messages
+        MacUILib_printf("=======================\n");
+        if(game -> getLoseFlagStatus()) {
+            MacUILib_printf("Your snake crashed into\nitself and perished...\nYou lose!\n");
+        } else {
+            MacUILib_printf("Game exited.\nThanks for playing!\n");
+        }
+        MacUILib_printf("=======================\n");
+
+        // MacUILib_printf("================\n");
+        MacUILib_printf("Score: %d\n", game -> getScore());   
+        MacUILib_printf("Snake Length: %d\n", player -> getPlayerPosList() -> getSize());
+        MacUILib_printf("=======================\n");
+    }
 
 }
 
