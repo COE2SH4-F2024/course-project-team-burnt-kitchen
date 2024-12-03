@@ -1,3 +1,10 @@
+/**
+ * @file Player.cpp
+ * @author Caden Chan (chanc167), Tyler Fong (fongt5)
+ * @date 2024-12-02
+ * 
+ */
+
 #include "Player.h"
 #include <iostream>
 
@@ -9,7 +16,6 @@ Player::Player(GameMechs* thisGMRef, Food* foodRef)
     mainGameMechsRef = thisGMRef;
     food = foodRef;
     myDir = STOP;
-    // playerPos = objPos(3, 3, '@');
     playerPosList = new objPosArrayList();
     playerPosList -> insertHead(objPos(2, 3, '@'));
     growCount = 0;
@@ -22,12 +28,6 @@ Player::~Player()
     // delete any heap members here
     delete mainGameMechsRef;
     delete playerPosList;
-}
-
-objPos Player::getPlayerPos() const
-{
-    return playerPos;
-    // return the reference to the playerPos array list
 }
 
 objPosArrayList* Player::getPlayerPosList() const

@@ -1,6 +1,11 @@
+/**
+ * @file GameMechs.cpp
+ * @author Caden Chan (chanc167), Tyler Fong (fongt5)
+ * @date 2024-12-02
+ * 
+ */
+
 #include "GameMechs.h"
-
-
 //the logic behind the game running and the board 
 
 GameMechs::GameMechs()

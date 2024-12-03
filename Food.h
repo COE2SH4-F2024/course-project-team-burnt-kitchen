@@ -1,3 +1,10 @@
+/**
+ * @file Food.h
+ * @author Caden Chan (chanc167), Tyler Fong (fongt5)
+ * @date 2024-12-02
+ * 
+ */
+
 #ifndef FOOD_H
 #define FOOD_H
 
@@ -11,7 +18,6 @@ class Food
     public:
         Food(GameMechs* thisGMRef);
         ~Food();
-        // void generateFood(objPos blockOff);
         objPosArrayList* getFoodBucket() const;
         void generateFood(objPosArrayList* blockOff);
         int getFoodCount() const;

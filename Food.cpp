@@ -1,3 +1,10 @@
+/**
+ * @file Food.cpp
+ * @author Caden Chan (chanc167), Tyler Fong (fongt5)
+ * @date 2024-12-02
+ * 
+ */
+
 #include "Food.h"
 #include <iostream>
 
@@ -7,17 +14,6 @@ Food::Food(GameMechs* thisGMRef)
     mainGameMechsRef = thisGMRef;
     foodCount = 5;
     foodBucket = new objPosArrayList();
-    // foodBucket -> insertTail(objPos(0, 0, '$'));
-    // foodBucket -> insertTail(objPos(0, 0, '$'));
-    // foodBucket -> insertTail(objPos(0, 0, '$'));
-    // foodBucket -> insertTail(objPos(0, 0, '$'));
-    // foodBucket -> insertTail(objPos(0, 0, '$'));
-    // foodBucket = new objPos[foodCount];
-    // foodBucket[0] = {2, 5, '$'};
-    // foodBucket[1] = {3, 5, '$'};
-    // foodBucket[2] = {4, 5, '$'};
-    // foodBucket[3] = {5, 5, '$'};
-    // foodBucket[4] = {6, 5, '$'};
 }
 
 Food::~Food()

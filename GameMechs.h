@@ -1,3 +1,10 @@
+/**
+ * @file GameMechs.h
+ * @author Caden Chan (chanc167), Tyler Fong (fongt5)
+ * @date 2024-12-02
+ * 
+ */
+
 #ifndef GAMEMECHS_H
 #define GAMEMECHS_H
 

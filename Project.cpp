@@ -1,3 +1,10 @@
+/**
+ * @file Project.cpp
+ * @author Caden Chan (chanc167), Tyler Fong (fongt5)
+ * @date 2024-12-02
+ * 
+ */
+
 #include <iostream>
 #include "MacUILib.h"
 #include "objPos.h"

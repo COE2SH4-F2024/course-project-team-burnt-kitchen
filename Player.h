@@ -1,3 +1,10 @@
+/**
+ * @file Player.h
+ * @author Caden Chan (chanc167), Tyler Fong (fongt5)
+ * @date 2024-12-02
+ * 
+ */
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -7,21 +14,13 @@
 #include "Food.h"
 
 class Player
-{
-    // Construct the remaining declaration from the project manual.
-
-    // Only some sample members are included here
-
-    // You will include more data members and member functions to complete your design.
-
-    
+{   
     public:
         enum Dir {UP, DOWN, LEFT, RIGHT, STOP};  // This is the direction state
 
         Player(GameMechs* thisGMRef, Food* foodRef);
         ~Player();
-
-        objPos getPlayerPos() const; // Upgrade this in iteration 3. 
+        
         objPosArrayList* getPlayerPosList() const;   
         void updatePlayerDir();
         void movePlayer();
@@ -33,11 +32,9 @@ class Player
         bool checkSelfCollision();
 
     private:
-        objPos playerPos; // Upgrade this in iteration 3. 
         objPosArrayList* playerPosList;      
         enum Dir myDir;
         char const sym = '@';
-        // Need a reference to the Main Game Mechanisms
         GameMechs* mainGameMechsRef;
         Food* food;
         int growCount = 0;
