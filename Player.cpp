@@ -92,8 +92,6 @@ void Player::movePlayer()
         x = (x + 1) % ((mainGameMechsRef -> getBoardSizeX())-2);
     }
     objPos newHead = objPos(x, y, sym);
-    cout << "A: " << newHead.pos -> x << ", " << newHead.pos -> y << endl;
-
     
     playerPosList -> insertHead(newHead);
     if(growCount > 0) {
