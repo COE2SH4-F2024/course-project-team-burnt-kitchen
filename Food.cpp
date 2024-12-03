@@ -2,8 +2,9 @@
 #include <iostream>
 
 
-Food::Food()
+Food::Food(GameMechs* thisGMRef)
 {
+    mainGameMechsRef = thisGMRef;
     foodCount = 5;
     foodBucket = new objPosArrayList();
     // foodBucket -> insertTail(objPos(0, 0, '$'));
@@ -21,7 +22,7 @@ Food::Food()
 
 Food::~Food()
 {
-    
+    delete foodBucket;
 }
 
 void Food::generateFood(objPosArrayList* blockOff) 
@@ -37,8 +38,8 @@ void Food::generateFood(objPosArrayList* blockOff)
         diffPos = 0;
         while(!diffPos)
         {
-            x_cord = rand() % 28;
-            y_cord = rand() % 13;
+            x_cord = rand() % (mainGameMechsRef -> getBoardSizeX()-2);
+            y_cord = rand() % (mainGameMechsRef -> getBoardSizeY()-2);
             for(int j = 0; j < blockOff -> getSize(); j++)
                 if(blockOff -> getElement(i).pos -> x == x_cord && blockOff -> getElement(i).pos -> y == y_cord)
                 {

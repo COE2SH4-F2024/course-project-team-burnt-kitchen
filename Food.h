@@ -4,10 +4,12 @@
 #include "objPos.h" 
 #include "objPosArrayList.h"
 #include <cstdlib>
+#include "GameMechs.h"
+
 class Food 
 {
     public:
-        Food();
+        Food(GameMechs* thisGMRef);
         ~Food();
         // void generateFood(objPos blockOff);
         objPosArrayList* getFoodBucket() const;
@@ -15,6 +17,7 @@ class Food
         int getFoodCount() const;
 
     private:
+        GameMechs* mainGameMechsRef;
         objPosArrayList* foodBucket;
         int foodCount;
 };

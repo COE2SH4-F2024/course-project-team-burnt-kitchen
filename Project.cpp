@@ -43,7 +43,7 @@ void Initialize(void)
     MacUILib_clearScreen();
 
     game = new GameMechs();
-    food = new Food();
+    food = new Food(game);
     player = new Player(game, food);
     food -> generateFood(player -> getPlayerPosList()); 
 }

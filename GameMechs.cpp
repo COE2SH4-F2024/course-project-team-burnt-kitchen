@@ -12,8 +12,6 @@ GameMechs::GameMechs()
     boardSizeX = 30;
     boardSizeY = 15;
     srand(time(NULL));
-
-    food = Food();
 }
 
 GameMechs::GameMechs(int boardX, int boardY)
@@ -25,8 +23,6 @@ GameMechs::GameMechs(int boardX, int boardY)
     boardSizeX = boardX;
     boardSizeY = boardY;
     srand(time(NULL));
-
-    food = Food();
 }
 
 // do you need a destructor?
