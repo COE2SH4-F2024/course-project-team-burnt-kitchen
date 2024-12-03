@@ -26,7 +26,6 @@ Food::~Food()
  */
 void Food::generateFood(objPosArrayList* blockOff) 
 {
-    // bool validNewPos;
     int diffPos;
     int x_cord, y_cord;
     //Removes all the existing objects in the food bucket
@@ -34,43 +33,6 @@ void Food::generateFood(objPosArrayList* blockOff)
     {
         getFoodBucket() -> removeTail();
     } 
-    // Generate new food
-    // objPos newFood;
-    // for(int i = 0; i < foodCount; i++)
-    // {
-    //     // 3 normal items, 2 special items
-    //     if (i <= 2) {
-    //         newFood = objPos(0, 0, '@');
-    //     } else {
-    //         newFood = objPos(0, 0, '$');
-    //     }
-    //     validNewPos = true;
-    //     do {
-    //         //Generates random x and y values within the game board
-    //         newFood.pos -> x = rand() % (mainGameMechsRef -> getBoardSizeX()-2);
-    //         newFood.pos -> y = rand() % (mainGameMechsRef -> getBoardSizeY()-2);
-
-
-    //         for(int j = 0; j < blockOff -> getSize(); j++)
-    //         {
-    //             //Checks the all the existing player position and compares them to the randomly generated x and y values
-    //             if(blockOff -> getElement(j).isPosEqual(&newFood))
-    //             {
-    //                 validNewPos = false;
-    //                 break;
-    //             }
-    //         }
-    //         if(validNewPos) {
-    //             for(int j=0; j < getFoodBucket() -> getSize(); j++) 
-    //             {
-    //                 if(getFoodBucket() -> getElement(j).isPosEqual(&newFood)) 
-    //                 {
-    //                     validNewPos = false;
-    //                     break;
-    //                 }
-    //             }
-    //         }
-    //     } while(!validNewPos);
 
     for(int i = 0; i < foodCount; i++)
     {
