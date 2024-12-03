@@ -25,7 +25,7 @@ Player::Player(GameMechs* thisGMRef, Food* foodRef)
 
 Player::~Player()
 {
-    // delete any heap members here
+    // delete heap members
     delete mainGameMechsRef;
     delete playerPosList;
 }
@@ -35,6 +35,10 @@ objPosArrayList* Player::getPlayerPosList() const
     return playerPosList;
 }
 
+/**
+ * Take keystrokes, update player direction variable `myDir` accordingly
+ * Only 90deg changes in direction allowed
+ */
 void Player::updatePlayerDir()
 {
     if(mainGameMechsRef -> getInput() == 0) return;
@@ -71,33 +75,37 @@ void Player::updatePlayerDir()
 
 /**
  * Move the player in the direction given by `myDir`
- * 
+ * Apply wraparound logic to player position
+ * Grow the player if necessary
  */
 void Player::movePlayer()
 {
     if(myDir == STOP) return;
     int x = getPlayerHead().pos -> x;
     int y = getPlayerHead().pos -> y;
-    // WRAPAROUND LOGIC
+    // Adjust position + WRAPAROUND LOGIC
     if(myDir == UP) {
         y--;
         if(y < 0) {
-            y = (mainGameMechsRef -> getBoardSizeY())-3;  // -3 
+            y = (mainGameMechsRef -> getBoardSizeY())-3;  // -2 to account for borders, -1 for 0-based indexing 
         }
     } else if (myDir == DOWN) {
-        y = (y + 1) % ((mainGameMechsRef -> getBoardSizeY())-2);
+        y = (y + 1) % ((mainGameMechsRef -> getBoardSizeY())-2); // -2 for borders
 
     } else if (myDir == LEFT) {
         x --;
         if(x < 0) {
-            x = (mainGameMechsRef -> getBoardSizeX())-3;
+            x = (mainGameMechsRef -> getBoardSizeX())-3; // -2 for borders, -1 for 0-based indexing
         }
     } else if (myDir == RIGHT) {
-        x = (x + 1) % ((mainGameMechsRef -> getBoardSizeX())-2);
+        x = (x + 1) % ((mainGameMechsRef -> getBoardSizeX())-2); // -2 for borders
     }
+    // CREATE AND ADD NEW PLAYER HEAD
     objPos newHead = objPos(x, y, sym);
     
     playerPosList -> insertHead(newHead);
+
+    // If growing, do not remove tail
     if(growCount > 0) {
         growCount--;
     } else {
